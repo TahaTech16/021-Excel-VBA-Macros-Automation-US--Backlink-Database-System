@@ -1,0 +1,204 @@
+Sub lookupFromMainDB()
+''============================================================================================
+''****************
+''Business requirement: Match all the domain url based on conditions
+''Any types of Excel Automation, Report, Dashboard, VBA, Macros, MIS, Adv. Excel, SQL, Web Development using Django please contact me
+''Name:Mahetab
+''mahetabforwork@gmail.com
+''Mob:+91 9545302653
+
+''****************
+''============================================================================================
+
+'
+' lookupFromMainDB Macro
+'
+
+'
+Sheets("B New List For Match").Select
+Sheets("B New List For Match").Activate
+
+
+    Columns("A:A").Select
+    Selection.Copy
+    Selection.Insert Shift:=xlToRight
+    Application.CutCopyMode = False
+    Columns("A:A").Select
+    Selection.Replace What:="*//", Replacement:="", LookAt:=xlPart, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="*www.", Replacement:="", LookAt:=xlPart, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="*https://", Replacement:="", LookAt:=xlPart, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="*http://", Replacement:="", LookAt:=xlPart, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Range("A1").Select
+    
+    Call deletePreData
+    Call vlookupFormulaForData
+    Call applyAndRemoveColor
+    
+    MsgBox ("Congratulation,Your task done,Enjoy !!!")
+    
+End Sub
+Sub deletePreData()
+    
+    Sheets("B New List For Match").Select
+    Sheets("B New List For Match").Activate
+    
+    Range("C5:S1048576").Select
+    Selection.ClearContents
+    Range("C5").Select
+    
+End Sub
+Sub vlookupFormulaForData()
+    
+    Range("A1048576").Select
+    Selection.End(xlUp).Select
+    lastrow = ActiveCell.Row
+    
+    
+    
+    Range("C5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,2,0)"
+    Range("C5").Select
+    Selection.Copy
+    Range("D5:S5").Select
+    ActiveSheet.Paste
+    Selection.End(xlToLeft).Select
+    Range("D5").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,3,0)"
+    Range("E5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,4,0)"
+    Range("F5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,5,0)"
+    Range("G5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,6,0)"
+    Range("H5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,7,0)"
+    Range("H6").Select
+    ActiveWindow.SmallScroll ToRight:=6
+    Range("I5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,8,0)"
+    Range("J5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,9,0)"
+    Range("K5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,10,0)"
+    Range("L5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,11,0)"
+    Range("M5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,12,0)"
+    Range("M6").Select
+    ActiveWindow.SmallScroll ToRight:=4
+    Range("N5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,13,0)"
+    Range("O5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,14,0)"
+    Range("O6").Select
+    ActiveWindow.SmallScroll ToRight:=2
+    Range("P5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,15,0)"
+    Range("Q5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,16,0)"
+    Range("R5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,17,0)"
+    Range("S5").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(RC1,'A Main Database'!C1:C18,18,0)"
+    Range("S6").Select
+    Sheets("A Main Database").Select
+    
+'    Range("R6").Select
+'    Selection.End(xlToLeft).Select
+'    Range("B6").Select
+'    Range(Selection, Selection.End(xlToRight)).Select
+'    Range(Selection, Selection.End(xlToRight)).Select
+    
+    Range("B6:R6").Select
+    Selection.Copy
+    
+    Sheets("B New List For Match").Select
+   ' Range("C5").Select
+    Range("C5:S5").Select
+    
+    'Range(Selection, Selection.End(xlToRight)).Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+        
+    Application.CutCopyMode = False
+        
+    Range("C5:" & "S" & lastrow).Select
+'    Range(Selection, Selection.End(xlDown)).Select
+'    Application.CutCopyMode = False
+    
+    Selection.FillDown
+    
+    Cells.Select
+    Selection.Copy
+    
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Range("A1").Select
+    Application.CutCopyMode = False
+    Cells.Select
+    Selection.Replace What:="#N/A", Replacement:="", LookAt:=xlPart, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Columns("A:A").Select
+    Selection.Delete Shift:=xlToLeft
+    
+    ActiveWorkbook.Save
+    Range("A1").Select
+    
+End Sub
+
+Sub applyAndRemoveColor()
+
+    Sheets("A Main Database").Select
+    Sheets("A Main Database").Activate
+    
+    Range("A1048576").Select
+    Selection.End(xlUp).Select
+    lastrow = ActiveCell.Row
+    
+    Range("U6:U1048576").Select
+    Selection.ClearContents
+    Range("A6").Select
+    
+    
+    Range("A6:" & "Z" & lastrow).Select
+
+    With Selection.Interior
+        .Pattern = xlNone
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    
+    Range("A2").Select
+    
+    For i = 6 To lastrow
+        For j = i + 1 To lastrow
+            If Range("A" & i).Value = Range("A" & j).Value Then
+                    
+                    Range("A" & j & ":" & "Z" & j).Select
+                       With Selection.Interior
+                           .Pattern = xlSolid
+                           .PatternColorIndex = xlAutomatic
+                           .Color = 65535
+                           .TintAndShade = 0
+                           .PatternTintAndShade = 0
+                       End With
+                    Range("U" & j).Value = "Duplicate Entry"
+                    
+            End If
+        Next j
+    
+    Next i
+    
+    Range("A6").Select
+End Sub
+

@@ -1,0 +1,45 @@
+### **Project Title:**
+
+**021 – Excel VBA Macros Automation (US) – Backlink Database Management System**
+
+### **Description:**
+
+Developed an automated **Backlink Tracking and Management System** in Excel using VBA for a U.S.-based digital marketing client. The system streamlines SEO link-building efforts by organizing, validating, and monitoring backlinks in a centralized database.
+
+---
+
+### 🔧 **Key Features:**
+
+* **UserForm Interface** for inputting backlink details:
+
+  * Website Name
+  * URL
+  * Anchor Text
+  * Domain Authority (DA)
+  * Date Acquired
+  * Status (Active/Inactive)
+
+* **Automatic URL Validation** using VBA to check:
+
+  * If the link is live
+  * If the anchor text exists on the target page
+  * If the domain is reachable
+
+* **Dynamic Table Management**:
+
+  * Real-time summary of backlink counts by status, domain, or date
+  * Filters and search for quick access to specific entries
+  * Conditional formatting to highlight broken or inactive links
+
+* **Scheduled Reminders & Reports**:
+
+  * VBA-driven alerts for expiring or broken links
+  * One-click PDF export of backlink summary
+
+* **Localized settings** for U.S. clients including MM/DD/YYYY date format and SEO standards
+
+---
+
+### 🎯 **Objective:**
+
+To automate the process of backlink tracking, ensure data accuracy, monitor link health, and generate actionable SEO reports—all within Excel.
